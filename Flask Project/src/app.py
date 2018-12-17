@@ -25,22 +25,26 @@ def index():
 
 @app.route("/upload", methods=['POST'])
 def upload():
-    if request.files:
+    if request.files and request.method == 'POST':
+        print(1)
         if not os.path.isdir(target):
             os.mkdir(target)
         file = request.files.get("file")
         file.save('\\'.join([target,'target_file.xlsx']))
         labels = col_list(file)
-        # print(labels)
         return render_template("index.html",labels=labels)
-    else:
-        # print()
-        if request.form['plot']=='Count plot':
+    elif request.method == 'POST':
+        print(2)
+        plot = request.form['plot']
+        print('Plot' + plot)
+        if plot == 'Count plot':
             parm = request.form['parm']
             print(parm)
             count_plt(parm)
             return render_template("output.html", user_image=r'static\output.png')
+        else:
+            return 'Plot not available'
 
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.11',port='98',debug=True)
+    app.run(host='127.0.0.91',port='98',debug=True)
