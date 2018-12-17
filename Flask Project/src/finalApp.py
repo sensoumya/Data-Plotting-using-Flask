@@ -22,8 +22,6 @@ def col_list(file):
     labels = list(df.columns)
     render_template("upload.html", labels=labels)
 
-
-
 @app.route("/")
 def index():
     return render_template("upload.html")

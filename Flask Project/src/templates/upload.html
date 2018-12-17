@@ -10,45 +10,45 @@
 <body>
 <h1>Graph Plotter</h1>
 <br><br/>
-<form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+<form id="upload-form" action="{{ url_for('upload') }}" method="POST,GET" enctype="multipart/form-data">
     <div class="form-group">
 
-        Mention the y/x parameters
+
         <div class="form-group">
             <input id="file-picker" type="file" name="file"
                    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel"
                    multiple>
-            <small id="formatInfo" class="form-text text-muted">Only .csv format supported</small>
+            <small id="formatInfo" class="form-text text-muted">Only .xlsx format supported</small>
         </div>
 
-        <!--&lt;!&ndash; List all the x axis parameters &ndash;&gt;-->
-        <!--<div id="xparam">-->
-            <!--<span>X parameters</span>-->
-            <!--&lt;!&ndash;<select>&ndash;&gt;-->
-                <!--&lt;!&ndash;<option value="volvo">Volvo</option>&ndash;&gt;-->
-                <!--&lt;!&ndash;<option value="saab">Saab</option>&ndash;&gt;-->
-                <!--&lt;!&ndash;<option value="mercedes">Mercedes</option>&ndash;&gt;-->
-                <!--&lt;!&ndash;<option value="audi">Audi</option>&ndash;&gt;-->
-            <!--&lt;!&ndash;</select>&ndash;&gt;-->
-            <!--<select name=labels method="GET" action="/">-->
-                <!--{% for label in labels %}-->
-                <!--<option value="{{label}}" SELECTED>{{labels}}</option>-->
-                <!--"-->
-                <!--{% endfor %}-->
-            <!--</select>-->
 
-        <!--</div>-->
+        <input class="btn btn-primary" type="submit" value="Upload">
+        <br/>
+        <br/>
+        <div>Mention the y/x parameters</div>
+        <!-- List all the x axis parameters -->
+        <div id="xparam">
+            <span>X parameters</span>
+            <select name=labels method="GET" action="/">
+                {% for label in labels %}
+                <option value="{{label}}">{{label}}</option>
+                "
+                {% endfor %}
+            </select>
 
-        <!--&lt;!&ndash; List all the y axis parameters &ndash;&gt;-->
-        <!--<div id="yparam">-->
-            <!--<span>Y parameters</span>-->
-            <!--<select>-->
-                <!--<option value="volvo">Volvo</option>-->
-                <!--<option value="saab">Saab</option>-->
-                <!--<option value="mercedes">Mercedes</option>-->
-                <!--<option value="audi">Audi</option>-->
-            <!--</select>-->
-        <!--</div>-->
+        </div>
+
+        <!-- List all the y axis parameters -->
+        <div id="yparam">
+            <span>Y parameters</span>
+            <select name=labels method="GET" action="/">
+                {% for label in labels %}
+                <option value="{{labels[0]}}">{{label}}</option>
+                "
+                {% endfor %}
+            </select>
+
+        </div>
     </div>
 
     <input class="btn btn-primary" type="submit" value="Plot graph">
