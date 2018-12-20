@@ -10,7 +10,7 @@
 </head>
 <body>
 <h1 class="page-header">
-    <a href="index.html">Graph Plotter</a>
+    <a href="{{ url_for('index') }}">Graph Plotter</a>
 </h1>
 <br><br/>
 <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
@@ -29,10 +29,12 @@
             <option value="Count plot">Count plot</option>
         </select>
     </div>
+    {% endif %}
+    {% if labels %}
     <br/>
     <div id="param">
         <span>Plot for ?</span>
-        <select name=parm[] method="POST" action="/" multiple>
+        <select name=parm[] method="POST" action="/" multiple placeholder="Search..">
             {% for label in labels %}
             <option value="{{label}}">{{label}}</option>
             {% endfor %}
