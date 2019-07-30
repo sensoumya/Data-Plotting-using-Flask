@@ -1,4 +1,4 @@
-from ubuntu:latest
+FROM ubuntu:latest
 MAINTAINER "Soumya"
 RUN apt-get update -y
 RUN apt-get install -y python3-pip python3-dev build-essential
