@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: flaskapi
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flaskapi
+    spec:
+      containers:
+      - name: flaskapi
+        image: soumyasen/docker_build_repo:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5151

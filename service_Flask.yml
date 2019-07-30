@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flaskapi
+  labels:
+    app: flaskapi
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: 80
+    targetPort: 5151
+  selector:
+    app: flaskapi
