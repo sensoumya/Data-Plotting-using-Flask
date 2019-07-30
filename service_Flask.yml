@@ -8,7 +8,7 @@ spec:
   type: LoadBalancer
   ports:
   - name: http
-    port: 90
+    port: 80
     targetPort: 5100
   selector:
     app: flaskapi
