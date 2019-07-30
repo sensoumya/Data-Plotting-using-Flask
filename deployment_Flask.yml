@@ -14,4 +14,4 @@ spec:
         image: soumyasen/docker_build_repo:1.0
         imagePullPolicy: Always
         ports:
-        - containerPort: 5151
+        - containerPort: 5100
